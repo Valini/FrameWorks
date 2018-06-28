@@ -10,29 +10,38 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class TestServlet
+ * Servlet implementation class UserNames
  */
-@WebServlet("/TestServlet")
-public class TestServlet extends HttpServlet {
-
-
+@WebServlet("/UserNames")
+public class UserNames extends HttpServlet {
 	
+    
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+response.setContentType("text/html");
 		
-		//sending a response that will be in html format/file
-		response.setContentType("text/html");
-		
-		String username = request.getParameter("username");
+		String username1 = request.getParameter("username1");
+		String username2 = request.getParameter("username2");
 		String password = request.getParameter("password");
-		String result= "Your username  is " + username + "password :"+password;
-		
+		String result="";
 		PrintWriter pw = response.getWriter();
-		pw.write("<html><body><h2>" + result + "</h2></body></html>");
+		if(username1.equalsIgnoreCase(username2)) {
+			
+			result= "Your username  is " + username1 + "password :"+password;
+			
+		}
 		
+		else
+			
+		{
+			result="Usernames do not match";
+			
+		}
+		
+		pw.write("<html><body><h2>" + result + "</h2></body></html>");
 		
 	}
 
-
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 	}

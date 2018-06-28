@@ -1,22 +1,38 @@
 CREATE A NEW PROJECT
-rightclick, new, other, dynamic web project, add a name, next finih
-
-
+rightclick, new, other, dynamic web project, add a name, next finish
 
 
 ADD XML FILE small case in web inf
 RightClick on Project, New, Other, search for XML file, 
-choose xml and the copy paste your xml code to the tab and add servlet name in servlet has to match servlet anme in servlet mapping
+choose xml and the copy paste your xml code to the tab 
+and add servlet name in servlet has to match servlet anme in servlet mapping
 CREATE A SERVLET CLASS
-right clicl new, servlet..
-
+right click on project, servlet.new class name, .
+ 
 ADD APACHE SERVER
 download to
 
 TO DOWNLOAD A JAR FILE AND LINK TO PROJECT
 go to maven website
 download servlet java api jar file
-connect thi file to your project
+connect thi file to your project by right click properties, class build file add jar and select the jar file.
 go to WebContent Weblinf lib and paste this file in the folder
 right click on project, properies, java build path ->libraries , add jar file button -locate jar file in web content
+ TO CREATE JSP FILE
+ right click on webcontent and new jsp file.\
+ add content
+ 
+ ADD index.jsp tp web.xml
+ 
+ TO ADD ANOTHER SERVLET
+ right click and new servlet..add message
+ make conenction in  web.xml with mapping
+ 
+ TO EXPORT WAR FILE
+ right click, export, searh war, save on desktop
+ copy the war file to the inside tomcat directory webapps
+ go to command and go to the bin file of tomcat
+ execute the command startup bat
+ stop server in eclipse
+ and in browser run the project 
  
