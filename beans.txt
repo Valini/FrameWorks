@@ -1,0 +1,22 @@
+CREATE A NEW PROJECT
+rightclick, new, other, dynamic web project, add a name, next finih
+
+
+
+
+ADD XML FILE small case in web inf
+RightClick on Project, New, Other, search for XML file, 
+choose xml and the copy paste your xml code to the tab and add servlet name in servlet has to match servlet anme in servlet mapping
+CREATE A SERVLET CLASS
+right clicl new, servlet..
+
+ADD APACHE SERVER
+download to
+
+TO DOWNLOAD A JAR FILE AND LINK TO PROJECT
+go to maven website
+download servlet java api jar file
+connect thi file to your project
+go to WebContent Weblinf lib and paste this file in the folder
+right click on project, properies, java build path ->libraries , add jar file button -locate jar file in web content
+ 
