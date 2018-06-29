@@ -149,11 +149,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-<<<<<<< HEAD
-      <Context docBase="ServletExample" path="/ServletExample" reloadable="true" source="org.eclipse.jst.jee.server:ServletExample"/><Context docBase="Hello" path="/Hello" reloadable="true" source="org.eclipse.jst.jee.server:Hello"/><Context docBase="ClassWorkUser" path="/ClassWorkUser" reloadable="true" source="org.eclipse.jst.jee.server:ClassWorkUser"/></Host>
-=======
-      <Context docBase="Hello" path="/Hello" reloadable="true" source="org.eclipse.jst.jee.server:Hello"/><Context docBase="ServletExample" path="/ServletExample" reloadable="true" source="org.eclipse.jst.jee.server:ServletExample"/></Host>
->>>>>>> 9db2dab061270dae2485b6df369186ce0f6de1b5
+      <Context docBase="Hello" path="/Hello" reloadable="true" source="org.eclipse.jst.jee.server:Hello"/><Context docBase="ServletExample" path="/ServletExample" reloadable="true" source="org.eclipse.jst.jee.server:ServletExample"/><Context docBase="ClassWorkUser" path="/ClassWorkUser" reloadable="true" source="org.eclipse.jst.jee.server:ClassWorkUser"/><Context docBase="1796104" path="/1796104" reloadable="true" source="org.eclipse.jst.jee.server:1796104"/></Host>
     </Engine>
   </Service>
 </Server>
