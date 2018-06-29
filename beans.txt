@@ -36,3 +36,5 @@ right click on project, properies, java build path ->libraries , add jar file bu
  stop server in eclipse
  and in browser run the project 
  
+ TO create JAVA HOME and JAVA 
+ 
