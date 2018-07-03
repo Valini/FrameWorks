@@ -38,3 +38,42 @@ right click on project, properies, java build path ->libraries , add jar file bu
  
  TO create JAVA HOME and JAVA 
  
+ 
+ To create Maven project
+ create new maven project choose archetype webapps
+ write anything n group id and project name in arteid
+ go to maven depository, look for java servlet api 4.01
+ look for the dependency and copy and paste in pom.xmlsave the project
+ then go to the .m2 file and java x folder
+ go to maven depo, look for mysql latest file 8.0.11
+ copy dependency and paste in pom file
+ create a new folder named java in main
+ create a new servlet with package name com.jac.web.controller
+ you can change the controller name
+ add welcome file in web.xml and add index.jsp
+ run
+ if you have problems with tomcat
+ right click on project choose maven, choose update project
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
