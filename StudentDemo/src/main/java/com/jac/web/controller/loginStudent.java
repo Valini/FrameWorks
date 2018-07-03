@@ -31,6 +31,13 @@ public class loginStudent extends HttpServlet {
 		
 		StudentDAO student = new StudentDAO();
 		Student s1 = student.getStudent(username);
+		if(s1==null) {
+			request.setAttribute("error", "Worng username or password");
+			
+		}else if(password.equals(s1.getPassword())){
+			request.setAttribute("username", "username");
+			request.setAttribute("student", s1);
+		}
 		
 		request.setAttribute("username", null);
 //		if(username.equals("admin")&& password.equals("admin"))

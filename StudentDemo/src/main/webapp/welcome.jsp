@@ -5,14 +5,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Welcome</title>
 </head>
 <body>
 <p>Welcome</p>
-<% Student student = (Student)request.getAttribute("student"); %>
+<!--  <% Student student = (Student)request.getAttribute("student"); %>
 
-Student details are :<b> <%=student %></b>
-
+Student details are :<b> <%=student %></b>-->
+<% String error = request.getAttribute("error"); if(error !=null){
+	%>
+	<h1>St</h1>
+}
 
 </body>
 </html>
