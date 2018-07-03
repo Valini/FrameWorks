@@ -20,15 +20,15 @@ public class IPD extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		//sending a response that will be in html format/file
-				response.setContentType("text/html");
-				PrintWriter pw = response.getWriter();
-				pw.write("<h1>Hello IPD12</h1>");
+		response.setContentType("text/html");
+		PrintWriter pw = response.getWriter();
+		pw.write("<h1>Hello IPD12!!!</h1>");
 				
 	}
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	
 	}
 
 }

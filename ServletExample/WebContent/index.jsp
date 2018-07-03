@@ -15,9 +15,9 @@
 <form action="one" method="post">
 USERNAME:<input type="text" name="username"/>
 PASSWORD:<input type="text" name="password"/>
-<button type="submit">Submit the data</button>
-
+<button type="submit">Submit the data with servlet post</button>
 </form>
+
 <form action="test.jsp" method="post">
 USERNAME:<input type="text" name="username"/>
 PASSWORD:<input type="text" name="password"/>
@@ -34,7 +34,7 @@ ID:<input type="text" name="id"/>
 
 <% out.println("Hello World"); %>
 
-<%! int val=50; %><br>
+<%! int val=150; %><br>
 <%="Value of the variable is:"+val %>
 
 <p><%= java.util.Calendar.getInstance().getTime() %></p>
