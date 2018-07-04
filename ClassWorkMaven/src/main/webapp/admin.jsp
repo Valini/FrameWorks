@@ -12,6 +12,25 @@
 <% User user = (User)request.getAttribute("user"); %>
 	
 	User details are:<b> <%=user %></b>
+	
+<table style="width:100%">
+  <tr>
+    <th>Product Name</th>
+    <th>Product Price</th> 
+    </tr>
+  <tr>
+
+    <td>Jill</td>
+    <td>Smith</td> 
+    <td>50</td>
+  </tr>
+  <tr>
+    <td>Eve</td>
+    <td>Jackson</td> 
+    <td>94</td>
+  </tr>
+</table>
+	
 <form action="product" method="post">
 	<label>Product Name:</label> 
 	<input type="text" name="productName" /><br>
@@ -19,6 +38,6 @@
 	<input type="text" name="productPrice" /><br>
 	<button type="submit">Add</button>
 </form>
-<a href="list.jsp" method="get" action="list">To List</a>
+
 </body>
 </html>

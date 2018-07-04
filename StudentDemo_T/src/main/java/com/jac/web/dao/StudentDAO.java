@@ -14,8 +14,8 @@ public class StudentDAO {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection(
-					"jdbc:mysql://localhost:3306/studentTest", "root", "root");
-			String query = "select * from users where username=?";
+					"jdbc:mysql://localhost:3306/studenttest", "root", "root");
+			String query = "select * from student2 where username=?";
 			PreparedStatement st = con.prepareStatement(query);
 			st.setString(1, username);
 			ResultSet rs = st.executeQuery();

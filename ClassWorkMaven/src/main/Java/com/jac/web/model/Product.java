@@ -2,9 +2,19 @@ package com.jac.web.model;
 
 public class Product {
 	
+	
+	
+	private int id;
+	
 	private String productName;
 	private double productPrice;
 	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getProductName() {
 		return productName;
 	}
@@ -19,9 +29,10 @@ public class Product {
 	}
 	@Override
 	public String toString() {
-		return "Product [productName=" + productName + ", productPrice=" + productPrice + ", getProductName()="
-				+ getProductName() + ", getProductPrice()=" + getProductPrice() + "]";
+		return "Product [id=" + id + ", productName=" + productName + ", productPrice=" + productPrice + ", getId()="
+				+ getId() + ", getProductName()=" + getProductName() + ", getProductPrice()=" + getProductPrice() + "]";
 	}
+	
 	
 
 }

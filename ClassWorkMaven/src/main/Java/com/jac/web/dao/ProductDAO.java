@@ -18,8 +18,8 @@ public class ProductDAO {
 			try {
 				Class.forName("com.mysql.jdbc.Driver");
 				Connection con = DriverManager.getConnection(
-						"jdbc:mysql://localhost:3306/classmaven", "root", "root");
-				String query = "select * from products where productName=?";
+						"jdbc:mysql://localhost:3306/assignment2", "root", "root");
+				String query = "select * from product where productName=?";
 				PreparedStatement st = con.prepareStatement(query);
 				st.setString(1, productName);
 				ResultSet rs = st.executeQuery();
@@ -44,11 +44,13 @@ public class ProductDAO {
 			try {
 				Class.forName("com.mysql.jdbc.Driver");
 				Connection con = DriverManager.getConnection(
-						"jdbc:mysql://localhost:3306/classmaven", "root", "root");
+						"jdbc:mysql://localhost:3306/assignment2", "root", "root");
 				
 				
-				String query = "insert into products values(?,?)";
+				//String query = "insert into product values(?,?,?)";
+				String query = "insert into product (productName, productPrice) values(?,?)";
 				PreparedStatement st = con.prepareStatement(query);
+				//st.setInt(1, 0);
 				st.setString(1, product.getProductName());
 				st.setDouble(2, product.getProductPrice());
 				
@@ -67,13 +69,14 @@ public class ProductDAO {
 			return result;
 			
 		}
-		ArrayList productsInDB=null;
+		
+		ArrayList<Product> productsInDB=null;
 		public ArrayList<Product> getAllProducts() {
 			Product p1 = null;
 			try {
 				Class.forName("com.mysql.jdbc.Driver");
 				Connection con = DriverManager.getConnection(
-						"jdbc:mysql://localhost:3306/classmaven", "root", "root");
+						"jdbc:mysql://localhost:3306/assignment2", "root", "root");
 				String query = "select * from products";
 				PreparedStatement st = con.prepareStatement(query);
 				//st.setString(1, productName);
@@ -81,13 +84,16 @@ public class ProductDAO {
 				
 				if(rs.next()) {
 					p1 = new Product();
+					int productIdFromDB=rs.getInt("id");
 					String productNameFromDB = rs.getString("productName");
 					String productPriceFromDB = rs.getString("productPrice");
 					
+					p1.setId(productIdFromDB);
 					p1.setProductName(productNameFromDB);
 					p1.setProductPrice(Integer.parseInt(productPriceFromDB));
+					productsInDB.add(p1);
 				}
-				productsInDB.add(p1);
+				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

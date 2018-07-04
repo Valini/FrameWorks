@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.jac.web.dao.StudentDAO;
 import com.jac.web.model.Student;
@@ -40,15 +41,21 @@ public class LoginController extends HttpServlet {
 		if(password.equals(s1.getPassword())) {
 			request.setAttribute("username", username);
 			request.setAttribute("student", s1);
+			//create session
+			HttpSession session = request.getSession();
+			session.setAttribute("user1", username);
+			response.sendRedirect("welcome.jsp");
 			
-			RequestDispatcher rd = request.getRequestDispatcher("welcome.jsp");
-			rd.forward(request, response);
+			//RequestDispatcher rd = request.getRequestDispatcher("welcome.jsp");
+			//rd.forward(request, response);
+			
 		}else {
 			request.setAttribute("username", null);
 			request.setAttribute("error", 
 					"Wrong username or password.");
-			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-			rd.forward(request, response);
+			//RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			//rd.forward(request, response);
+			response.sendRedirect("index.jsp");
 		}
 	}
 

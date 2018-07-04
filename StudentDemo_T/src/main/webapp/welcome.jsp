@@ -7,6 +7,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Welcome.jsp</title>
 <body>
+<%if(session.getAttribute("user1")==null){
+	response.sendRedirect("login.jsp");
+}else {
+		
+		out.print("Else");
+	
+}%>
+
+	
+
 	Welcome.jsp page.
 	<% Student student = (Student)request.getAttribute("student"); %>
 	
