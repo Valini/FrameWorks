@@ -22,18 +22,16 @@
     <th>Product Name</th>
     <th>Product Price</th> 
     </tr>
-  <tr>
+  
 <% ArrayList<Product> productList =  (ArrayList<Product>)request.getAttribute("productList"); 
-for (int i=0; i<productList.length; i++){
-Product product[i]=new Product() %>	
-	  <tr><td><%= product[i].id%></td>
-	    <td><%= product[i].productName%></td> 
-	    <td><%=product[i].productPrice %></td>
+for (int i=0; i<productList.size(); i++){
+Product product = productList.get(i); %>
+<tr>
+<td><%= product.getId() %></td>
+<td><%= product.getProductName() %>
+<td><%= product.getProductPrice() %>
+<%}  %>
 </tr>
-<%} %>
-  
-  
- 
 </table>
 	
 <form action="product" method="post">
