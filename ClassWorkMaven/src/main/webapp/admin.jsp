@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@page import="com.jac.web.model.User"%>
+    <%@page import= "java.util.ArrayList"%>
+    <%@page import="com.jac.web.model.Product"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,20 +18,22 @@
 	
 <table style="width:100%">
   <tr>
+  	<th>id</th>
     <th>Product Name</th>
     <th>Product Price</th> 
     </tr>
   <tr>
-
-    <td>Jill</td>
-    <td>Smith</td> 
-    <td>50</td>
-  </tr>
-  <tr>
-    <td>Eve</td>
-    <td>Jackson</td> 
-    <td>94</td>
-  </tr>
+<% ArrayList<Product> productList =  (ArrayList<Product>)request.getAttribute("productList"); 
+for (int i=0; i<productList.length; i++){
+Product product[i]=new Product() %>	
+	  <tr><td><%= product[i].id%></td>
+	    <td><%= product[i].productName%></td> 
+	    <td><%=product[i].productPrice %></td>
+</tr>
+<%} %>
+  
+  
+ 
 </table>
 	
 <form action="product" method="post">

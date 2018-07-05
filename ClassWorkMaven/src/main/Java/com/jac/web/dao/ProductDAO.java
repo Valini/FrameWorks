@@ -99,5 +99,33 @@ public class ProductDAO {
 			}
 			return productsInDB;
 		}
+		public String DeleteProduct(int id) {
+			//Product p1 = null;
+			String result = "Product was not successfully deleted";
+			try {
+				Class.forName("com.mysql.jdbc.Driver");
+				Connection con = DriverManager.getConnection(
+						"jdbc:mysql://localhost:3306/assignment2", "root", "root");
+				
+				String query = "delete from product where id =?";
+				PreparedStatement st = con.prepareStatement(query);
+				st.setInt(1, id);
+				
+				
+				int res = st.executeUpdate();
+				
+				if(res == 1) {
+					result = "Product successfully deleted!";
+				}
+				
+				con.close();
+				
+			
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return result;
+			
+		}
 
 }

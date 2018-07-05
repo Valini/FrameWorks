@@ -1,6 +1,7 @@
 package com.jac.web.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.jac.web.dao.ProductDAO;
 import com.jac.web.dao.UserDAO;
+import com.jac.web.model.Product;
 import com.jac.web.model.User;
 
 /**
@@ -52,9 +55,14 @@ public class LoginController extends HttpServlet {
 		User s1 = user.getUser(username);
 		//check if password entered by user matches password in database
 		if(password.equals(s1.getPassword())) {
-			request.setAttribute("username", username);
+			
 			request.setAttribute("user", s1);
 			if(username.equals("admin")) {
+				ProductDAO products= new ProductDAO();
+				
+				ArrayList<Product> productList=products.getAllProducts();
+				
+				request.setAttribute("productList", productList);
 			RequestDispatcher rd = request.getRequestDispatcher("admin.jsp");
 			rd.forward(request, response);
 			}
