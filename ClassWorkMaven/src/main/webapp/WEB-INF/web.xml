@@ -38,7 +38,7 @@
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>ListController</servlet-name>
-  	<url-pattern>/ListController</url-pattern>
+  	<url-pattern>/list</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>UserController</servlet-name>

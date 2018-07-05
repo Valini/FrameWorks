@@ -21,6 +21,7 @@
   	<th>id</th>
     <th>Product Name</th>
     <th>Product Price</th> 
+    <th>Delete</th> 
     </tr>
   
 <% ArrayList<Product> productList =  (ArrayList<Product>)request.getAttribute("productList"); 
@@ -30,8 +31,11 @@ Product product = productList.get(i); %>
 <td><%= product.getId() %></td>
 <td><%= product.getProductName() %>
 <td><%= product.getProductPrice() %>
+<td><form action="list" method="get" ><input type="hidden" name="productId" value="<%= product.getId() %>"><button type="submit">Delete</button></form><td>
+
 <%}  %>
 </tr>
+
 </table>
 	
 <form action="product" method="post">
