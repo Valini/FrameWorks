@@ -1,7 +1,6 @@
 package com.jac.web.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -14,15 +13,15 @@ import com.jac.web.dao.ProductDAO;
 import com.jac.web.model.Product;
 
 /**
- * Servlet implementation class ListController
+ * Servlet implementation class EmployeeController
  */
-public class ListController extends HttpServlet {
+public class EmployeeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ListController() {
+    public EmployeeController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,28 +30,18 @@ public class ListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String productId = request.getParameter("productId");
-		int id= Integer.parseInt(productId);
-		ProductDAO p1= new ProductDAO();
-		String result= p1.DeleteProduct(id);
-		request.setAttribute("result", result);
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		/*out.write("<html>\r\n" + 
-				"<head>\r\n" + 
-				"<title>Servlet.jsp</title>\r\n" + 
-				"<body>\r\n" + 
-				"	<h2>"+result+"</h2>\r\n" + 
-				"</body>\r\n" + 
-				"</html>");*/
-		//refresh the product list
-				ProductDAO products= new ProductDAO();
-				ArrayList<Product> productList=products.getAllProducts();
-				request.setAttribute("productList", productList);
-	RequestDispatcher rd = request.getRequestDispatcher("admin.jsp");
-	rd.include(request, response);
-		 
-	}
+		String searchProductName = request.getParameter("searchAction");
+        //search the database for this product
+		ProductDAO products= new ProductDAO();
+		ArrayList<Product> productList=products.GetProductsbyName(searchProductName);
+		
+		request.setAttribute("productList", productList);
+		RequestDispatcher rd = request.getRequestDispatcher("admin.jsp");
+		rd.forward(request, response);  
+            }
+     
+     
+
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

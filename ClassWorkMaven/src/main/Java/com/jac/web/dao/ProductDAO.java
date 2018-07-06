@@ -127,5 +127,38 @@ public class ProductDAO {
 			return result;
 			
 		}
+		
+		public ArrayList<Product> GetProductsbyName(String productName) {
+			ArrayList<Product> productsInDB= new ArrayList<Product>();
+			//Product p1 = null;
+			
+			try {
+				Class.forName("com.mysql.jdbc.Driver");
+				Connection con = DriverManager.getConnection(
+						"jdbc:mysql://localhost:3306/assignment2", "root", "root");
+				
+				String query = "select * from product where productName =?";
+				PreparedStatement st = con.prepareStatement(query);
+				st.setString(1, productName);
+				ResultSet rs = st.executeQuery();
+				
+				while(rs.next()) {
+					Product p1 = new Product();
+					int productIdFromDB=rs.getInt("id");
+					String productNameFromDB = rs.getString("productName");
+					String productPriceFromDB = rs.getString("productPrice");
+					
+					p1.setId(productIdFromDB);
+					p1.setProductName(productNameFromDB);
+					p1.setProductPrice(Double.parseDouble(productPriceFromDB));
+					productsInDB.add(p1);
+				}
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return productsInDB;
+		}
+
 
 }

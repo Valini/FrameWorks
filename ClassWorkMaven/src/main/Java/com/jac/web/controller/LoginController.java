@@ -34,10 +34,10 @@ public class LoginController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		session.removeAttribute("user1");
+		session.removeAttribute("username");
 		session.invalidate();
 		
-		System.out.println("Logging outvsession was removed");
+		System.out.println("Logging out, session was removed");
 		response.sendRedirect("index.jsp");
 	}
 
@@ -53,10 +53,20 @@ public class LoginController extends HttpServlet {
 			UserDAO user = new UserDAO();
 		//call method get User from DAO to check if this user exists in database
 		User s1 = user.getUser(username);
+		//if username or password is null
+		if(s1 == null) {
+			request.setAttribute("error", "Wrong username or password.");
+			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			rd.forward(request, response);	}
+		
 		//check if password entered by user matches password in database
 		if(password.equals(s1.getPassword())) {
-			
+			request.setAttribute("username", username);
 			request.setAttribute("user", s1);
+			//create session
+			HttpSession session = request.getSession();
+			session.setAttribute("username", username);
+			//if the user is an admin
 			if(username.equals("admin")) {
 				ProductDAO products= new ProductDAO();
 				
@@ -66,7 +76,12 @@ public class LoginController extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("admin.jsp");
 			rd.forward(request, response);
 			}
-			else if(username.equals("user")) {
+			else  {
+				ProductDAO products= new ProductDAO();
+				
+				ArrayList<Product> productList=products.getAllProducts();
+				request.setAttribute("username", username);
+				request.setAttribute("productList", productList);
 				RequestDispatcher rd = request.getRequestDispatcher("user.jsp");
 				rd.forward(request, response);
 			}

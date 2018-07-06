@@ -2,6 +2,7 @@ package com.jac.web.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -40,26 +41,40 @@ public class AdminController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String result;
 		String productName = request.getParameter("productName");
-		double productPrice =  Double.parseDouble(request.getParameter("productPrice"));
-		
+		Double productPrice =  Double.parseDouble(request.getParameter("productPrice"));
+		//if product Name or price is empty
+		if(productName.equals(null) || productPrice.equals(null)) {
+			result="Please enter product";
+			
+		}
+		else {
 		Product product = new Product();
 		product.setProductName(productName);
 		product.setProductPrice(productPrice);
 		
 		ProductDAO p1= new ProductDAO();
-		String result= p1.AddProduct(product);
+		result= p1.AddProduct(product);
+			
+		}
 		
-		
+		//send response to admin
+		request.setAttribute("result", result);
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
-		out.write("<html>\r\n" + 
+		/*out.write("<html>\r\n" + 
 				"<head>\r\n" + 
 				"<title>Servlet.jsp</title>\r\n" + 
 				"<body>\r\n" + 
 				"	<h2>"+result+"</h2>\r\n" + 
 				"</body>\r\n" + 
-				"</html>");
+				"</html>");*/
+		//refresh the product list
+		ProductDAO products= new ProductDAO();
+		ArrayList<Product> productList=products.getAllProducts();
+		request.setAttribute("productList", productList);
+		
 	RequestDispatcher rd = request.getRequestDispatcher("admin.jsp");
 	rd.include(request, response);
 	}
