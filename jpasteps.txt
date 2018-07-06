@@ -1,0 +1,14 @@
+Create Maven project
+create classes
+in resources, create a folder WEB-INF and create xml file and copy persistence code
+in pom.xml, copy dependency from 
+Hibernate ORM Hibernate Core » 5.3.2.Final repository and paste in there
+create a main App
+create student classes
+create database
+
+add annotations to student class
+change the database link in persistence xml
+right click on main app and run as application
+add property in persistence.xml
+<property name="hibernate.show_sql" value="true" />
