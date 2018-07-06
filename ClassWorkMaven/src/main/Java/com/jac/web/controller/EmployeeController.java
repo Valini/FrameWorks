@@ -32,15 +32,24 @@ public class EmployeeController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String searchProductName = request.getParameter("searchAction");
         //search the database for this product
+		if(searchProductName == null ||searchProductName.equals("")) {
+			//refresh the product list
+			ProductDAO products= new ProductDAO();
+			ArrayList<Product> productList=products.getAllProducts();
+			request.setAttribute("productList", productList);
+			RequestDispatcher rd = request.getRequestDispatcher("admin.jsp");
+			rd.forward(request, response);  
+		}
+		else {
 		ProductDAO products= new ProductDAO();
-		ArrayList<Product> productList=products.GetProductsbyName(searchProductName);
-		
+		//ArrayList<Product> productList=products.GetProductsbyName(searchProductName);
+		ArrayList<Product> productList=products.GetProductsbyNameLike(searchProductName);
 		request.setAttribute("productList", productList);
 		RequestDispatcher rd = request.getRequestDispatcher("admin.jsp");
 		rd.forward(request, response);  
             }
      
-     
+	}
 
 
 	/**

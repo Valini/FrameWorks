@@ -18,9 +18,7 @@
 <%@ include file="navbar2.jsp" %>
  <!--Search Form -->
   <form action="search" method="get" id="seachEmployeeForm" role="form" >
-    <input type="hidden" id="searchAction" name="searchAction" value="searchByName"/>
-    <div class="form-group col-xs-5">
-        <input type="text" name="employeeName" id="employeeName" class="form-control" required="true" 
+        <input type="text" name="searchAction" id="searchAction" class="form-control" 
                  placeholder="Type the Name or Last Name of the employee"/>                    
     </div>
     <button type="submit" class="btn btn-success">
@@ -69,7 +67,9 @@
     <tbody>
      <% ArrayList<Product> productList =  (ArrayList<Product>)request.getAttribute("productList"); 
 for (int i=0; i<productList.size(); i++){
-Product product = productList.get(i); %>
+Product product = productList.get(i); 
+//if (product.getProductName().contains(arg0))
+%>
 <tr>
 <td><%= product.getId() %></td>
 <td><%= product.getProductName() %>
