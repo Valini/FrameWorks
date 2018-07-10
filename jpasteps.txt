@@ -58,3 +58,23 @@ add annotations to student class @Entity @ Id
 
 6. change the database link in persistence xml to match database name
 right click on main app and run as application
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////
+TO CREATE MAVEN PROJECT
+ create new maven project choose archetype webapps 1.0
+ write anything n group id and project name in arteid
+ go to maven depository, look for java servlet api 4.01
+ look for the dependency and copy and paste in pom.xmlsave the project
+ then go to the .m2 file and java x folder
+ go to maven depo, look for mysql latest file 8.0.11
+ copy dependency and paste in pom file
+ create a new folder named java in main
+ create a new servlet with package name com.jac.web.controller
+ you can change the controller name
+ add welcome file in web.xml and add index.jsp
+ run
+ if you have problems with tomcat
+ right click on project choose maven, choose update project
+ 
