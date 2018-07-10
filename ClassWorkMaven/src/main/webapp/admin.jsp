@@ -16,19 +16,15 @@
 
 <!-- Navbar -->
 <%@ include file="navbar2.jsp" %>
- <!--Search Form -->
-  <form action="search" method="get" id="seachEmployeeForm" role="form" >
-        <input type="text" name="searchAction" id="searchAction" class="form-control" 
-                 placeholder="Type the Name or Last Name of the employee"/>                    
+
+ <form class="search-form" action="search" method="get" >
+    <div class="input-group">
+        <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-search"></i></span></div><input class="form-control" type="text" name="searchAction" id="searchAction" placeholder="Please enter name of product.." />
+        <div class="input-group-append"><button class="btn btn-light" type="Submit">Search</button></div>
     </div>
-    <button type="submit" class="btn btn-success">
-        <span class="glyphicon glyphicon-search"></span> Search
-    </button>
-    <br></br>
-    <br></br>
-  </form>
+</form>
   
-<main class="page container" style="margin-top:120px;"> 
+<main class="page container" style="margin-top:0px;"> 
 <div class="container-fluid">
 <h1>Welcome <% out.print(session.getAttribute("username")); %></h1>
 <br>
@@ -37,13 +33,14 @@
 <h5>Fill out the form below to add a product</h5>
 <form action="product" method="post">
 					<div class="form-group">
-						<label for="productName">Product Name</label><input
+						<label for="productName">Product Name</label>
+						<input
 							class="form-control item" type="text" id="productName"
-							name="productName" required="true">
+							name="productName" required="true" pattern="^[a-zA-Z_.-]*$" title="Text only">
 					</div>
 					<div class="form-group">
 						<label for="productPrice">Product Price</label><input class="form-control"
-							type="text" id="productPrice" name="productPrice" required="true">
+							type="text" id="productPrice" name="productPrice" pattern="^[0-9.]*$" title="Prices only"required="true">
 					</div>
 					<button class="btn btn-primary btn-primary" type="submit">Add</button>
 				</form>

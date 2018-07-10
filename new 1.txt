@@ -1,0 +1,52 @@
+		String userName = request.getParameter("userName");
+		String password = request.getParameter("password");
+		//check if username and password match in database using DAO
+	
+		UserDAO user = new UserDAO();
+		//call method get User from DAO to check if this user exists in database
+		User s1 = user.getUser(userName);
+		//if username or password is null
+		if(s1 == null) {
+			request.setAttribute("error", "Wrong username or password. null");
+			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			rd.forward(request, response);	
+		}
+	
+	//check if password entered by user matches password in database
+		if(password.equals(s1.getPassword())) {
+			request.setAttribute("username", userName);
+			request.setAttribute("user", s1);
+			//create session
+			HttpSession session = request.getSession();
+			session.setAttribute("username", userName);
+		//if the user is an admin
+		if(userName.equals("admin")) {
+		//	ProductDAO products= new ProductDAO();
+			
+			//ArrayList<Product> productList=products.getAllProducts();
+			
+			//request.setAttribute("productList", productList);
+			RequestDispatcher rd = request.getRequestDispatcher("admin.jsp");
+			rd.forward(request, response);
+		}
+		else  {
+			//ProductDAO products= new ProductDAO();
+			
+			//ArrayList<Product> productList=products.getAllProducts();
+			request.setAttribute("username", userName);
+			//request.setAttribute("productList", productList);
+			RequestDispatcher rd = request.getRequestDispatcher("user.jsp");
+			rd.forward(request, response);
+		}
+	} else {
+		request.setAttribute("username", null);
+		request.setAttribute("error", 
+				"Wrong username or password.");
+		RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+		rd.forward(request, response);
+	}
+	
+	
+	}
+
+}
