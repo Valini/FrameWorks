@@ -213,7 +213,7 @@ public class ProductDAO {
 				String query = "from Product where productName like :productName";
 				
 			Query query2 = (Query) em.createQuery(query);
-			query2.setParameter("productName", productName);
+			query2.setParameter("productName", "%" + productName + "%");
 			//query2.setParameter(0, temp);
 
 			productsInDB = (ArrayList<Product>)query2.getResultList();
