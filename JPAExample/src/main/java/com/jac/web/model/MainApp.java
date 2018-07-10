@@ -16,9 +16,9 @@ public class MainApp {
 
 		EntityManager em = emf.createEntityManager();
 
-		Student student = em.find(Student.class, 102);
+		//Student student = em.find(Student.class, 102);
 
-		System.out.println(student);
+		//System.out.println(student);
 		/*
 		//Create data in student obj
 		Student s2 = new Student();
@@ -87,20 +87,28 @@ public class MainApp {
 //				}
 //				
 				
-		//Create Query Object
+//		//Create Query Object
+//		String query = "from Student where userName= :user";
+//		Query query2 =  em.createQuery(query);
+//		query2.setParameter("user", "Paul");
+//
+//		List<Student> list = (List<Student>)query2.getResultList();
+//		
+//		for (Student st : list) {
+//			System.out.println(st);
+//		}
+//		
+		
 		String query = "from Student where userName= :user";
 		Query query2 =  em.createQuery(query);
 		query2.setParameter("user", "Paul");
 
-		List<Student> list = (List<Student>)query2.getResultList();
 		
-		for (Student st : list) {
+		Student st = (Student) query2.getSingleResult();
+		
 			System.out.println(st);
-		}
+	
 		
-		
-				
-				
 				em.close( );
 			emf.close( );
 	}

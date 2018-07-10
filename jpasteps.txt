@@ -1,14 +1,60 @@
-Create Maven project
-create classes
-in resources, create a folder WEB-INF and create xml file and copy persistence code
-in pom.xml, copy dependency from 
-Hibernate ORM Hibernate Core » 5.3.2.Final repository and paste in there
-create a main App
-create student classes
-create database
+1.Create Maven project
+Group id: com.jac12
+2.Create Java folder in Main
 
-add annotations to student class
-change the database link in persistence xml
-right click on main app and run as application
+3.create classes in com.jac.web.model
+Add annotations @Entity for classname and @Id to the primary key on top
+
+4.in src/main/resources folder, create a folder META-INF and create xml file called persistence.xml and copy persistence code
+<?xml version="1.0" encoding="UTF-8"?>
+CHANGE DATABASE CONENCTION IN PERSISTENCE
+<persistence version="2.1"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence 
+	http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	
+	<persistence-unit name="punit1">
+
+		<properties>
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/assignment2?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC" />
+			<property name="javax.persistence.jdbc.user" value="root" />
+			<property name="javax.persistence.jdbc.password" value="root" />
+		<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+		<property name="hibernate.show_sql" value="true" />
+		</properties>
+		
+	</persistence-unit>
+
+</persistence>
+
+
 add property in persistence.xml
 <property name="hibernate.show_sql" value="true" />
+
+5. in pom.xml, copy dependency from 
+Hibernate ORM Hibernate Core » 5.3.2.Final repository and paste in there
+
+<dependency>
+    <groupId>org.hibernate</groupId>
+    <artifactId>hibernate-core</artifactId>
+    <version>5.3.2.Final</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+<dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>8.0.11</version>
+</dependency>
+
+
+
+//create a main App
+//create student classes
+//create database
+
+add annotations to student class @Entity @ Id
+
+6. change the database link in persistence xml to match database name
+right click on main app and run as application

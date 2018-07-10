@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="student2")
+//@Table(name="student2")
 
 public class Student {
 	
@@ -15,7 +15,7 @@ public class Student {
 	private int StudentID;
 	
 	
-	@Column(name="username2")
+	//@Column(name="username2")
 	private String userName;
 	@Override
 	public String toString() {
